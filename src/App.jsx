@@ -208,7 +208,7 @@ export default function App() {
                     className="w-full h-full object-cover" 
                   />
                   <div className="absolute -bottom-2 bg-[#d8c29d] text-[#1a1438] text-xs px-2 py-0.5 rounded-full font-bold z-10">
-                    Lvl. 1
+                    
                   </div>
                 </div>
                 
@@ -399,11 +399,11 @@ export default function App() {
               </a>
             </div>
 
-            <div className="w-full bg-[#1a1438] rounded-xl border-2 border-[#d8c29d]/70 overflow-hidden shadow-inner flex flex-col items-center justify-center p-2 min-h-[500px]">
+            <div className="w-full bg-[#1a1438] rounded-xl border-2 border-[#d8c29d]/70 overflow-hidden shadow-inner flex flex-col items-center justify-center p-2 min-h-500px]">
               <iframe 
                 title="Find Me Game"
                 src="https://itch.io/embed-upload/15989658?color=e53b44" 
-                className="w-full h-[520px] rounded-lg border-0"
+                className="w-full h-520px] rounded-lg border-0"
                 allow="autoplay; fullscreen"
               ></iframe>
             </div>
