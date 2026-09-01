@@ -7,11 +7,15 @@ export default function App() {
   const [hasEntered, setHasEntered] = useState(false);
   const [isWritingModalOpen, setIsWritingModalOpen] = useState(false);
 
-  // Audio setup
+  // Dynamic base path for GitHub Pages asset resolution
+  const basePath = import.meta.env.BASE_URL;
+
+  // Audio setup with relative base path
   const audioRef = useRef(null);
 
   useEffect(() => {
-    audioRef.current = new Audio('/YumuDT main theme by ayumudt.mp3');
+    const audioPath = `${basePath}YumuDT main theme by ayumudt.mp3`.replace(/\/\//g, '/');
+    audioRef.current = new Audio(audioPath);
     audioRef.current.loop = true;
 
     return () => {
@@ -19,7 +23,7 @@ export default function App() {
         audioRef.current.pause();
       }
     };
-  }, []);
+  }, [basePath]);
 
   const handleEnterRealm = () => {
     setHasEntered(true);
@@ -115,7 +119,6 @@ export default function App() {
             </h3>
 
             <div className="flex flex-col gap-4 text-sm">
-              {/* Story Item 1 */}
               <div className="bg-[#eddcc4] p-4 rounded-xl border border-[#d8c29d]/70 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div>
                   <h4 className="font-bold text-base text-[#2a204a]">Trick or Truth: Elysian</h4>
@@ -131,7 +134,6 @@ export default function App() {
                 </a>
               </div>
 
-              {/* Story Item 2 */}
               <div className="bg-[#eddcc4] p-4 rounded-xl border border-[#d8c29d]/70 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div>
                   <h4 className="font-bold text-base text-[#2a204a]">The Circles of Wyrds</h4>
@@ -147,7 +149,6 @@ export default function App() {
                 </a>
               </div>
 
-              {/* Story Item 3 */}
               <div className="bg-[#eddcc4] p-4 rounded-xl border border-[#d8c29d]/70 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div>
                   <h4 className="font-bold text-base text-[#2a204a]">A Tale That Never Known</h4>
@@ -203,7 +204,7 @@ export default function App() {
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-28 h-28 rounded-full border-4 border-[#d8c29d] bg-[#2a204a] mb-3 flex items-center justify-center shadow-md overflow-hidden">
                   <img 
-                    src="/YumuDT.jpeg" 
+                    src={`${basePath}YumuDT.jpeg`.replace(/\/\//g, '/')} 
                     alt="YumuDT Profile" 
                     className="w-full h-full object-cover" 
                   />
@@ -399,11 +400,12 @@ export default function App() {
               </a>
             </div>
 
-            <div className="w-full bg-[#1a1438] rounded-xl border-2 border-[#d8c29d]/70 overflow-hidden shadow-inner flex flex-col items-center justify-center p-2 min-h-500px]">
+            {/* Scaled Game Player Embed Container */}
+            <div className="w-full bg-[#1a1438] rounded-xl border-2 border-[#d8c29d]/70 overflow-hidden shadow-inner flex flex-col items-center justify-center p-2 h-[550px] md:h-[650px]">
               <iframe 
                 title="Find Me Game"
                 src="https://itch.io/embed-upload/15989658?color=e53b44" 
-                className="w-full h-520px] rounded-lg border-0"
+                className="w-full h-full rounded-lg border-0"
                 allow="autoplay; fullscreen"
               ></iframe>
             </div>
@@ -425,8 +427,6 @@ export default function App() {
 
       {/* 4. Bottom 4-Column Grid */}
       <footer className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 z-10">
-        
-        {/* Writing Card with Modal Trigger */}
         <div className="border-2 border-[#d8c29d] bg-[#f6ede0] rounded-xl p-4 min-h-40 flex flex-col justify-between shadow-md">
           <div>
             <h4 className="font-serif font-bold text-sm mb-1 text-[#33261d]">📖 Writing Log</h4>
@@ -475,7 +475,6 @@ export default function App() {
             Leave a note →
           </button>
         </div>
-
       </footer>
     </div>
   );
